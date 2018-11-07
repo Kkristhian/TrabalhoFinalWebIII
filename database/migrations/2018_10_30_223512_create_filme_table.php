@@ -14,12 +14,12 @@ class CreateFilmeTable extends Migration
     public function up()
     {
         Schema::create('filme', function (Blueprint $table) {
-            $tabela->increments('id');
-            $tabela->string('nome', 100);
-            $tabela->integer('ano', 4);
-            $tabela->integer('gen_codigo');
-            $tabela->integer('dir_codigo');
-            $tabela->integer('fx_etaria');
+            $table->increments('id');
+            $table->string('nome', 100);
+            $table->integer('ano')->unsigned();
+            $table->integer('gen_codigo')->unsigned();
+            $table->integer('dir_codigo')->unsigned();
+            $table->integer('fx_etaria')->unsigned();
         });
     }
 
