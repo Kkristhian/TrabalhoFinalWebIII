@@ -18,13 +18,15 @@ Route::get('/', function () {
 Route::get('/inicial', 'FilmeController@loadInicial');
 
 Route::get('/inicial/ConsultaFilme', 'FilmeController@loadConsultarFilme');
-Route::get('/inicial/CadastroFilme', 'FilmeController@loadCadastrarFilme');
-
-Route::get('/inicial/ConsultaGenero', 'GeneroController@loadConsultarGenero');
-Route::get('/inicial/CadastroGenero', 'GeneroController@loadCadastrarGenero');
-
-Route::get('/inicial/ConsultaEstudio', 'EstudioController@loadConsultarEstudio');
-Route::get('/inicial/CadastroEstudio', 'EstudioController@loadCadastrarEstudio');
+Route::get('/inicial/CadastrarFilme', 'FilmeController@loadCadastrarFilme');
 
 Route::get('/inicial/ConsultaDiretor', 'DiretorController@loadConsultarDiretor');
-Route::get('/inicial/CadastroDiretor', 'DiretorController@loadCadastrarDiretor');
+Route::get('/inicial/CadastrarDiretor', 'DiretorController@loadCadastrarDiretor');
+
+Route::get('/inicial/ConsultaGenero', 'GeneroController@loadConsultarGenero');
+Route::get('/inicial/CadastrarGenero', 'GeneroController@loadCadastrarGenero');
+
+Route::get('/inicial/ConsultaEstudio', 'EstudioController@loadConsultarEstudio');
+Route::get('/inicial/CadastrarEstudio', 'EstudioController@loadCadastrarEstudio');
+
+

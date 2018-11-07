@@ -21,7 +21,6 @@
                 <div class ="navbar-header">
                     <a href = "/inicial/" class ="navbar-brand">TRABALHO FINAL WEB III</a>
                 </div>
-                
                 <div>
                     <ul class="nav nav-tabs">
                         

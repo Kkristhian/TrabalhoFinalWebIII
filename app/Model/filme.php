@@ -25,7 +25,7 @@ class Filme extends Model
         return $filme;
     }
 
-    public function addFime()
+    public function addFilme()
     {
         $input = Input::all();
         $filme = new Filme($input);
