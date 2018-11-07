@@ -9,27 +9,27 @@
         </div>
         <div class="form-group">
             <label for="nome">Nome:</label>
-            <input type="text" name="Nome" id="nome" required class="form-control" placeholder="Nome">
+            <input type="text" name="nome" id="nome" required class="form-control" placeholder="Nome">
         </div>
         <div class="form-group">
             <label for="ano">Ano:</label>
-            <input type="number" name="Ano" id="Ano" required class="form-control" placeholder="Ano">
+            <input type="date" name="ano" id="ano" required class="form-control" placeholder="Ano">
         </div>
         <div class="form-group">
-            <label for="Fx_etaria">Faixa Etária:</label>
-            <input type="text" name="Fx_etaria" id="Fx_etaria" required class="form-control" placeholder="Faixa Etária">
+            <label for="fx_etaria">Faixa Etária:</label>
+            <input type="text" name="fx_etaria" id="fx_etaria" required class="form-control" placeholder="Faixa Etária">
         </div>
         <div class="form-group">
             <label for="gen_codigo">Código do Genero:</label>
-            <input type="number" name="Gen_codigo" id="Gen_codigo" required class="form-control" placeholder="Código do genero">
+            <input type="number" name="gen_codigo" id="gen_codigo" required class="form-control" placeholder="Código do genero">
         </div>
         <div class="form-group">
             <label for="dir_codigo">Código do Diretor:</label>
-            <input type="number" name="Dir_codigo" id="Dir_codigo" required class="form-control" placeholder="Código do Diretor">
+            <input type="number" name="dir_codigo" id="dir_codigo" required class="form-control" placeholder="Código do Diretor">
         </div>
         <div class="form-group">
-            <label for="est_sigla">Sigla do estúdio:</label>
-            <input type="text" name="Est_sigla" id="Est_sigla" required class="form-control" placeholder="Sigla do estudio">
+            <label for="est_id">Código do estúdio:</label>
+            <input type="number" name="est_id" id="est_id" required class="form-control" placeholder="Código do estudio">
         </div>
         
         <div class="form-group">

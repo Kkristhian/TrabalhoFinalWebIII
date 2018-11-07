@@ -12,22 +12,7 @@
         </tr>
     </thead>
     <tbody id="tabelaDiretor">
-    @foreach($diretores as $diretor)
-        <tr class='row'>
-            <td class="col-2 center">{{ $diretor->Dir_codigo }}</td>
-            <td class="col-2 center">{{ $diretor->Est_sigla }}</td>
-            <td class="col-2 center">{{ $diretor->Nome_dir }}</td>
-            <td class="col-2 center">{{ $diretor->Idade }}</td>
-            <td class="col-2 center">
-                <a href="">
-                    <i  class="btn btn-primary"><span class="glyphicon glyphicon-refresh">Update</span></i>
-                </a>
-                <a href="">
-                    <i class="btn btn-danger"><span class="glyphicon glyphicon-remove">Delete</span></i>
-                </a>
-            </td>
-        </tr>
-        @endforeach
+    
     </tbody>
 </table>
 

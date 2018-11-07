@@ -1,7 +1,7 @@
-window.onload = atualizarTabelaFilme;
-window.onload = atualizarTabelaDiretor;
-window.onload = atualizarTabelaEstudio;
-window.onload = atualizarTabelaGenero;
+window.addEventListener("load", atualizarTabelaFilme);
+window.addEventListener("load", atualizarTabelaDiretor);
+window.addEventListener("load", atualizarTabelaEstudio);
+window.addEventListener("load", atualizarTabelaGenero);
 
 
 // ------------------------------------------ FILME ----------------------------------------------------
@@ -12,7 +12,7 @@ function deletarFilme(iId){
             type: "delete",
             async: false,
             dataType: "json",
-            url: "http://localhost:41121/api/filme/" + iId,
+            url: "http://localhost:8000/api/filme/" + iId,
             success: function(oRetorno){
                 atualizarTabelaFilme();
                 console.log(oRetorno);
@@ -30,25 +30,25 @@ function atualizarTabelaFilme(){
             type: "get",
             async: false,
             dataType: "json",
-            url: "http://localhost:41121/api/filme",
+            url: "http://localhost:8000/api/filme",
             success: function(oRetorno){
                 console.log(oRetorno);
                 let sHtml = "";
 
                 oRetorno.forEach(element => {
                     sHtml += "<tr class='row'>";
-                    sHtml += "<td class='col-2 center'>" + element.Id + "</td>";
-                    sHtml += "<td class='col-2'>" + element.Nome + "</td>";
-                    sHtml += "<td class='col-2'>" + element.Ano + "</td>";
-                    sHtml += "<td class='col-2'>" + element.Fx_etaria + "</td>";
-                    sHtml += "<td class='col-2'>" + element.Gen_codigo + "</td>";
-                    sHtml += "<td class='col-2'>" + element.Dir_codigo + "</td>";
-                    sHtml += "<td class='col-2'>" + element.Est_sigla + "</td>";
+                    sHtml += "<td class='col-1 center'>" + element.id + "</td>";
+                    sHtml += "<td class='col-1'>" + element.nome + "</td>";
+                    sHtml += "<td class='col-1'>" + element.ano + "</td>";
+                    sHtml += "<td class='col-1'>" + element.fx_etaria + "</td>";
+                    sHtml += "<td class='col-2'>" + element.gen_codigo + "</td>";
+                    sHtml += "<td class='col-2'>" + element.dir_codigo + "</td>";
+                    sHtml += "<td class='col-2'>" + element.est_id + "</td>";
                     sHtml += "<td class='col-2 center'>";
                     sHtml += "<a href=''>";
                     sHtml += "<i  class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-refresh\">Update</span></i>";
                     sHtml += "</a>&nbsp;&nbsp;";
-                    sHtml += "<a onclick='deleta(" + element.Id + ")'>";
+                    sHtml += "<a onclick='deletarFilme(" + element.id + ")'>";
                     sHtml += "<i class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\">Delete</span></i>";
                     sHtml += "</a>";
                     sHtml += "</td>";
@@ -73,7 +73,7 @@ $("#cadastrarFilme").on("click", function(event){
         let iFx_etaria = $("#Fx_etaria").val();
         let iGen_codigo = $("#Gen_codigo").val();
         let iDir_codigo = $("#Dir_codigo").val();
-        let sEst_sigla = $("#Est_sigla").val();
+        let iEst_id = $("#Est_id").val();
 
     try {
         $.ajax({
@@ -87,18 +87,19 @@ $("#cadastrarFilme").on("click", function(event){
                 Fx_etaria: iFx_etaria,
                 Gen_codigo: iGen_codigo,
                 Dir_codigo: iDir_codigo,
-                Est_sigla: sEst_sigla
+                Est_id: iEst_id
             },
-            // url: "http://localhost:41121/api/filme/" + id,
-            url: "http://localhost:41121/api/filme",
+            // url: "http://localhost:8000/api/filme/" + id,
+            url: "http://localhost:8000/api/filme",
             success: function(oRetorno){
-                window.location = "http://localhost:41121/inicial/ConsultarFilme";
+                window.location = "http://localhost:8000/inicial/ConsultarFilme";
             }
         });
     } catch(oErro){
         console.log(oErro);
         alert("Erro ao Cadastrar");
     }
+});
 
 // $("#atualizarFilme").on("click", function(id){
 //         event.preventDefault();
@@ -137,13 +138,13 @@ $("#cadastrarFilme").on("click", function(event){
 
 // --------------------------------------- DIRETOR -------------------------------------------------------
 
-function deletarDiretor(iDir_codigo){
+function deletarDiretor(iId){
     try {
         $.ajax({
             type: "delete",
             async: false,
             dataType: "json",
-            url: "http://localhost:41121/api/diretor/" + iDir_codigo,
+            url: "http://localhost:8000/api/diretor/" + iId,
             success: function(oRetorno){
                 atualizarTabelaDiretor();
                 console.log(oRetorno);
@@ -161,22 +162,22 @@ function atualizarTabelaDiretor(){
                 type: "get",
                 async: false,
                 dataType: "json",
-                url: "http://localhost:41121/api/diretor",
+                url: "http://localhost:8000/api/diretor",
                 success: function(oRetorno){
                     console.log(oRetorno);
                     let sHtml = "";
     
                     oRetorno.forEach(element => {
                         sHtml += "<tr class='row'>";
-                        sHtml += "<td class='col-2 center'>" + element.Dir_codigo + "</td>";
-                        sHtml += "<td class='col-2 center'>" + element.Est_sigla + "</td>";
-                        sHtml += "<td class='col-2 center'>" + element.Nome_dir + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.id + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.est_id + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.nome_dir + "</td>";
                         sHtml += "<td class='col-2 center'>" + element.idade + "</td>";
                         sHtml += "<td class='col-2 center'>";
                         sHtml += "<a href=''>";
                         sHtml += "<i  class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-refresh\">Update</span></i>";
                         sHtml += "</a>&nbsp;&nbsp;";
-                        sHtml += "<a onclick='deleta(" + element.Dir_codigo + ")'>";
+                        sHtml += "<a onclick='deleta(" + element.Id + ")'>";
                         sHtml += "<i class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\">Delete</span></i>";
                         sHtml += "</a>";
                         sHtml += "</td>";
@@ -196,8 +197,8 @@ function atualizarTabelaDiretor(){
 $("#cadastrarDiretor").on("click", function(event){
         event.preventDefault();
     
-        let iDir_codigo = $("#Dir_codigo").val();
-        let sEst_sigla = $("#est_sigla").val();
+        let iId = $("#Id").val();
+        let iEst_id = $("#Est_id").val();
         let sNome = $("#Nome").val();
         let iIdade = $("#Idade").val();        
     
@@ -207,21 +208,21 @@ $("#cadastrarDiretor").on("click", function(event){
                 async: false,
                 dataType: "json",
                 data: {
-                    Dir_codigo: iDir_codigo,
-                    Est_sigla: sEst_sigla,
+                    Id: iId,
+                    Est_id: iEst_id,
                     Nome: sNome,
                     Idade: iIdade
                 },
-                url: "http://localhost:41121/api/diretor",
+                url: "http://localhost:8000/api/diretor",
                 success: function(oRetorno){
-                    window.location = "http://localhost:41121/inicial/ConsultarDiretor";
+                    window.location = "http://localhost:8000/inicial/ConsultarDiretor";
                 }
             });
         } catch(oErro){
             console.log(oErro);
             alert("Erro ao cadastrar");
         }
-        
+    }); 
         
 // $("#atualizarDiretor").on("click", function(id){
             //     event.preventDefault();
@@ -254,13 +255,13 @@ $("#cadastrarDiretor").on("click", function(event){
 
 // --------------------------------------- ESTUDIO -----------------------------------------------------
 
-function deletarEstudio(sEst_sigla){
+function deletarEstudio(iId){
     try {
         $.ajax({
             type: "delete",
             async: false,
             dataType: "json",
-            url: "http://localhost:41121/api/estudio/" + sEst_sigla,
+            url: "http://localhost:8000/api/estudio/" + iId,
             success: function(oRetorno){
                 atualizarTabelaEstudio();
                 console.log(oRetorno);
@@ -278,20 +279,21 @@ function atualizarTabelaEstudio(){
                 type: "get",
                 async: false,
                 dataType: "json",
-                url: "http://localhost:41121/api/estudio",
+                url: "http://localhost:8000/api/estudio",
                 success: function(oRetorno){
                     console.log(oRetorno);
                     let sHtml = "";
     
                     oRetorno.forEach(element => {
                         sHtml += "<tr class='row'>";
-                        sHtml += "<td class='col-2 center'>" + element.Est_sigla + "</td>";
-                        sHtml += "<td class='col-2 center'>" + element.Est_nome + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.id + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.est_sigla + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.est_nome + "</td>";
                         sHtml += "<td class='col-2 center'>";
                         sHtml += "<a href=''>";
                         sHtml += "<i  class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-refresh\">Update</span></i>";
                         sHtml += "</a>&nbsp;&nbsp;";
-                        sHtml += "<a onclick='deleta(" + element.Est_sigla + ")'>";
+                        sHtml += "<a onclick='deletarEstudio(" + element.id + ")'>";
                         sHtml += "<i class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\">Delete</span></i>";
                         sHtml += "</a>";
                         sHtml += "</td>";
@@ -310,7 +312,8 @@ function atualizarTabelaEstudio(){
     
 $("#cadastrarEstudio").on("click", function(event){
         event.preventDefault();
-    
+
+        let iId = $("#Id").val();
         let sEst_sigla = $("#Est_sigla").val();
         let sEst_nome = $("#Est_nome").val();      
     
@@ -320,10 +323,11 @@ $("#cadastrarEstudio").on("click", function(event){
                 async: false,
                 dataType: "json",
                 data: {
+                    Id: iId,
                     Est_sigla: sEst_sigla,
                     Est_nome: sEst_nome
                 },
-                url: "http://localhost:41121/api/estudio",
+                url: "http://localhost:8000/api/estudio",
                 success: function(oRetorno){
                     window.location = "http://localhost:41121/inicial/ConsultarEstudio";
                 }
@@ -332,7 +336,7 @@ $("#cadastrarEstudio").on("click", function(event){
             console.log(oErro);
             alert("Erro ao cadastrar");
         }
-        
+    }); 
         
 // $("#atualizarEstudio").on("click", function(id){
             //     event.preventDefault();
@@ -361,13 +365,13 @@ $("#cadastrarEstudio").on("click", function(event){
 
 // --------------------------------------- GENERO -----------------------------------------------------
 
-function deletarGenero(iGen_codigo){
+function deletarGenero(iId){
     try {
         $.ajax({
             type: "delete",
             async: false,
             dataType: "json",
-            url: "http://localhost:41121/api/genero/" + iGen_codigo,
+            url: "http://localhost:8000/api/genero/" + iId,
             success: function(oRetorno){
                 atualizarTabelaGenero();
                 console.log(oRetorno);
@@ -385,27 +389,27 @@ function atualizarTabelaGenero(){
                 type: "get",
                 async: false,
                 dataType: "json",
-                url: "http://localhost:41121/api/genero",
+                url: "http://localhost:8000/api/genero",
                 success: function(oRetorno){
                     console.log(oRetorno);
                     let sHtml = "";
     
                     oRetorno.forEach(element => {
                         sHtml += "<tr class='row'>";
-                        sHtml += "<td class='col-2 center'>" + element.Gen_codigo + "</td>";
+                        sHtml += "<td class='col-2 center'>" + element.id + "</td>";
                         sHtml += "<td class='col-2 center'>" + element.descricao + "</td>";
                         sHtml += "<td class='col-2 center'>";
                         sHtml += "<a href=''>";
                         sHtml += "<i  class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-refresh\">Update</span></i>";
                         sHtml += "</a>&nbsp;&nbsp;";
-                        sHtml += "<a onclick='deleta(" + element.Gen_codigo + ")'>";
+                        sHtml += "<a onclick='deletarGenero(" + element.id + ")'>";
                         sHtml += "<i class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-remove\">Delete</span></i>";
                         sHtml += "</a>";
                         sHtml += "</td>";
                         sHtml += "</tr>";
                     });
     
-                    $("#tabelaEstudio").html(sHtml);
+                    $("#tabelaGenero").html(sHtml);
                 }
             });
         } catch(oErro){
@@ -418,7 +422,7 @@ function atualizarTabelaGenero(){
 $("#cadastrarGenero").on("click", function(event){
         event.preventDefault();
     
-        let iGen_codigo = $("#Gen_codigo").val();
+        let iId = $("#Id").val();
         let sDescricao = $("#Descricao").val();      
     
         try {
@@ -427,19 +431,19 @@ $("#cadastrarGenero").on("click", function(event){
                 async: false,
                 dataType: "json",
                 data: {
-                    Gen_codigo: iGen_codigo,
+                    Id: iId,
                     Descricao: sDescricao
                 },
-                url: "http://localhost:41121/api/genero",
+                url: "http://localhost:8000/api/genero",
                 success: function(oRetorno){
-                    window.location = "http://localhost:41121/inicial/ConsultarGenero";
+                    window.location = "http://localhost:8000/inicial/ConsultarGenero";
                 }
             });
         } catch(oErro){
             console.log(oErro);
             alert("Erro ao cadastrar");
         }
-        
+    });
         
 // $("#atualizarGenero").on("click", function(id){
             //     event.preventDefault();
@@ -464,4 +468,4 @@ $("#cadastrarGenero").on("click", function(event){
             //         console.log(oErro);
             //         alert("Erro ao atualizar");
             //     }
-    )};
+

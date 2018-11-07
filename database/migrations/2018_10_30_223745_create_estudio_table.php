@@ -14,8 +14,9 @@ class CreateEstudioTable extends Migration
     public function up()
     {
         Schema::create('estudio', function (Blueprint $table) {
-            $tabela->integer('est_sigla', 10);
-            $tabela->string('est_nome', 50);
+            $table->increments('id')->unsigned()->unique();
+            $table->string('est_sigla', 3);
+            $table->string('est_nome', 50);
         });
     }
 

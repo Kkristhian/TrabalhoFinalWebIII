@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Estudio extends Model
 {
     protected $table = 'estudio';
-    protected $fillable = array("est_sigla","est_nome");
-    protected $primaryKey = "est_sigla";
+    protected $fillable = array("id","est_sigla","est_nome");
+    protected $primaryKey = "id";
     public $timestamps = false;
 
     public function todosEstudios()

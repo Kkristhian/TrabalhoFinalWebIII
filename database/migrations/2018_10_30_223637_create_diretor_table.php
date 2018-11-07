@@ -14,12 +14,10 @@ class CreateDiretorTable extends Migration
     public function up()
     {
         Schema::create('diretor', function (Blueprint $table) {
-            $table->increments('dir_codigo')->unsigned()->unique();
-            $table->string('est_sigla', 10);
-            $table->integer('ano')->unsigned();
+            $table->increments('id')->unsigned()->unique();
+            $table->integer('est_id')->unsigned();
             $table->string('nome_dir', 50);
-            $table->integer('dir_codigo')->unsigned();;
-            $table->integer('idade')->unsigned();;
+            $table->integer('idade');
         });
     }
 

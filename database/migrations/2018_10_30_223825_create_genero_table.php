@@ -14,8 +14,8 @@ class CreateGeneroTable extends Migration
     public function up()
     {
         Schema::create('genero', function (Blueprint $table) {
-            $tabela->integer('gen_codigo');
-            $tabela->string('descricao', 50);
+            $table->increments('id')->unsigned()->unique();
+            $table->string('descricao', 50);
         });
     }
 

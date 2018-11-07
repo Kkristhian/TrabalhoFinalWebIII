@@ -68,12 +68,12 @@ class GeneroController extends BaseController
         return view('mainKristhian');
     }
 
-    public function loadConsultarGenero ()
+    public function loadConsultarGenero()
     {
         return view("genero.consulta_genero", [ "generos" => $this->genero->todosGeneros() ]);
     }
 
-    public function loadCadastrarGeneros(){
+    public function loadCadastrarGenero(){
         return view('genero.cadastro_genero', [
             'id' => $this->max() + 1
         ]);

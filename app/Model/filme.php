@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Filme extends Model
 {
     protected $table = 'filme';
-    protected $fillable = array("id","nome","ano","fx_etaria","gen_codigo","dir_codigo","est_sigla");
+    protected $fillable = array("id","nome","ano","fx_etaria","gen_codigo","dir_codigo","est_id");
     protected $primaryKey = "id";
     public $timestamps = false;
 

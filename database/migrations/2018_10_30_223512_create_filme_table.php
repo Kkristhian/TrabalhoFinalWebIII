@@ -14,10 +14,11 @@ class CreateFilmeTable extends Migration
     public function up()
     {
         Schema::create('filme', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned()->unique();
             $table->string('nome', 100);
-            $table->integer('ano')->unsigned();
+            $table->date('ano');
             $table->integer('gen_codigo')->unsigned();
+            $table->integer('est_id')->unsigned();
             $table->integer('dir_codigo')->unsigned();
             $table->integer('fx_etaria')->unsigned();
         });

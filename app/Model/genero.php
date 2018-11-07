@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Genero extends Model
 {
     protected $table = 'genero';
-    protected $fillable = array("gen_codigo","descricao");
-    protected $primaryKey = "gen_codigo";
+    protected $fillable = array("id","descricao");
+    protected $primaryKey = "id";
     public $timestamps = false;
 
     public function todosGeneros()
@@ -55,6 +55,6 @@ class Genero extends Model
     }
 
     public function max(){
-        return \DB::table('genero')->max('gen_codigo');
+        return \DB::table('genero')->max('id');
     }
 }

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Diretor extends Model
 {
     protected $table = 'diretor';
-    protected $fillable = array("dir_codigo","est_sigla","nome_dir","idade");
-    protected $primaryKey = "dir_codigo";
+    protected $fillable = array("id","Est_id","nome_dir","idade");
+    protected $primaryKey = "id";
     public $timestamps = false;
 
     public function todosDiretores()
