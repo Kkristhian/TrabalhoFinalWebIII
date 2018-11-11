@@ -40,7 +40,7 @@ class FilmeController extends BaseController
 
     public function atualizarFilme($id)
     {
-        $genero = $this->genero->atualizarFilme($id);
+        $genero = $this->filme->atualizarFilme($id);
         if (!$filme) {
             return response()->json(['response', 'Filme não encontrado'], 400)
                 ->header('Content-Type', 'application/json');
