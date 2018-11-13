@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Model\Diretor;
+use Illuminate\Http\Request;
 
 class DiretorController extends BaseController
 {
@@ -78,9 +79,11 @@ class DiretorController extends BaseController
             'id' => $this->max() + 1
         ]);
     }
-    public function loadAtualizarDiretor(){
+    public function loadAtualizarDiretor(Request $request, $id){
+        $oModel = $this->diretor->getDiretor($id);
         return view('diretor.atualiza_diretor', [
-            'id' => $this->max() + 1
+            'id' => $id,
+            'model' => $oModel
         ]);
     }
 

@@ -445,7 +445,7 @@ $("#cadastrarGenero").on("click", function(event){
                 },
                 url: "http://localhost:8000/api/genero",
                 success: function(oRetorno){
-                    window.location = "http://localhost:8000/inicial/ConsultarGenero";
+                    window.location = "http://localhost:8000/inicial/ConsultaGenero";
                 }
             });
         } catch(oErro){
@@ -456,12 +456,14 @@ $("#cadastrarGenero").on("click", function(event){
         
 $("#atualizarGenero").on("click", function(id){
                 event.preventDefault();
-            
+                
               let iId = $("#id").val();
               let sDescricao = $("#descricao").val();      
+              console.log(iId);
+              console.log(sDescricao);
                 try {
                     $.ajax({
-                        type: "post",
+                        type: "put",
                         async: false,
                         dataType: "json",
                         data: {

@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Model\Filme;
+use Illuminate\Http\Request;
 
 class FilmeController extends BaseController
 {
@@ -78,9 +79,11 @@ class FilmeController extends BaseController
             'id' => $this->max() + 1
         ]);
     }
-    public function loadAtualizarFilme(){
+    public function loadAtualizarFilme(Request $request, $id){
+        $oModel = $this->filme->getFilme($id);
         return view('filme.atualiza_filme', [
-            'id' => $this->max() + 1
+            'id' => $id,
+            'model' => $oModel
         ]);
     }
 

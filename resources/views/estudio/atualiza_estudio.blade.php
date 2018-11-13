@@ -9,15 +9,15 @@
         </div>
         <div class="form-group">
             <label for="est_sigla">Sigla do estudio:</label>
-            <input type="text" name="est_sigla" id="est_sigla"required class="form-control" placeholder="sigla">
+            <input type="text" name="est_sigla" value="{{ $model->est_sigla }}" id="est_sigla"required class="form-control" placeholder="sigla">
         </div>
         <div class="form-group">
             <label for="est_nome">Nome do Estudio</label>
-            <input type="text" name="est_nome" id="est_nome" required class="form-control" placeholder="Nome">
+            <input type="text" name="est_nome" value="{{ $model->est_nome }}" id="est_nome" required class="form-control" placeholder="Nome">
         </div>
        
         <div class="form-group">
-        <button type="submit" id="atualiza" class="btn btn-success totalwidth">Submit</button>
+        <button type="submit" id="atualizarEstudio" class="btn btn-success totalwidth">Submit</button>
         </div>
     </form>
 

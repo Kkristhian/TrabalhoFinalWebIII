@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Model\Genero;
+use Illuminate\Http\Request;
 
 class GeneroController extends BaseController
 {
@@ -78,9 +79,11 @@ class GeneroController extends BaseController
             'id' => $this->max() + 1
         ]);
     }
-    public function loadAtualizarGenero(){
+    public function loadAtualizarGenero(Request $request, $id){
+        $oModel = $this->genero->getGenero($id);
         return view('genero.atualiza_genero', [
-            'id' => $this->max() + 1
+            'id' => $id,
+            'model' => $oModel
         ]);
     }
 

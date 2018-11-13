@@ -10,7 +10,6 @@ class Diretor extends Model
     protected $fillable = array("id","Est_id","nome_dir","idade");
     protected $primaryKey = "id";
     public $timestamps = false;
-
     public function todosDiretores()
     {
         return self::all();

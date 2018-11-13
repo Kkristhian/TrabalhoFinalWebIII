@@ -10,11 +10,11 @@
         
         <div class="form-group">
             <label for="descricao">Descrição:</label>
-            <input type="text" name="descricao"  id="descricao" required class="form-control" placeholder="descricao">
+            <input type="text" name="descricao"  value="{{ $model->descricao }}" id="descricao" required class="form-control" placeholder="descricao">
         </div>
        
         <div class="form-group">
-        <button type="submit" id="atualiza" class="btn btn-success totalwidth">Submit</button>
+        <button type="submit" id="atualizarGenero" class="btn btn-success totalwidth">Submit</button>
         </div>
     </form>
 

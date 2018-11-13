@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Model\Estudio;
+use Illuminate\Http\Request;
 
 class EstudioController extends BaseController
 {
@@ -78,9 +79,11 @@ class EstudioController extends BaseController
             'id' => $this->max() + 1
         ]);
     }
-    public function loadAtualizarEstudio(){
+    public function loadAtualizarEstudio(Request $request, $id){
+        $oModel = $this->estudio->getEstudio($id);
         return view('estudio.atualiza_estudio', [
-            'id' => $this->max() + 1
+            'id' => $id,
+            'model' => $oModel
         ]);
     }
 
